@@ -4,7 +4,11 @@ import '../../Utilities/string_constant.dart';
 import '../../models/user_model.dart';
 import '../../models/menu_model.dart';
 import 'package:http/http.dart' as http;
+
+import '../idempiere_rest/idempiere_client.dart';
+import '../idempiere_rest/session.dart';
 // import 'package:connectivity_plus/connectivity_plus.dart';
+
 
 enum AppEndpoint {
   login,
@@ -19,7 +23,7 @@ class AppService extends ChangeNotifier {
   String getEndpointUrl(AppEndpoint endpoint) {
     switch (endpoint) {
       case AppEndpoint.login:
-        return '${Texts.baseUrl()}auth/login';
+        return '${Texts.baseUrl()}auth/tokens';
       case AppEndpoint.register:
         return '${Texts.baseUrl()}auth/register';
       case AppEndpoint.profile:
@@ -39,14 +43,33 @@ class AppService extends ChangeNotifier {
     final urlString = authService.getEndpointUrl(endpoint);
     Uri url = Uri.parse(urlString);
 
-    var response = await http.post(
+    IdempiereClient().setBaseUrl('${Texts.baseUrl()}');
+    var response = await IdempiereClient().login("/auth/tokens", email, password);
+    int roleId = (await IdempiereClient().getRoles(response.clients.first.id!))
+        .first
+        .id!;
+
+    int adOrgId = (await IdempiereClient()
+        .getOrganizations(response.clients.first.id!, roleId))
+        .first
+        .id!;
+    int warehouseId = (await IdempiereClient()
+        .getWarehouses(response.clients.first.id!, roleId, adOrgId))
+        .first
+        .id!;
+    Session s = await IdempiereClient().initSession(
+        "/auth/tokens", response.token, response.clients.first.id!, roleId,
+        organizationId: adOrgId, warehouseId: warehouseId);
+    /*var response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({"email": email, "password": password}),
+      body: jsonEncode({"userName": email, "password": password}),
     );
+*/
+String bearertoken=response.token;
 
-    if (response.statusCode == 200) {
-      UserResponse user = UserResponse.fromJson(json.decode(response.body));
+    if (  s.token.isNotEmpty) {
+      UserResponse user = UserResponse.fromJson(json.decode(s.token));
       completion(user, true);
     } else {
       completion(null, false);

@@ -5,6 +5,9 @@ import 'package:cashier_mate/screens/auth/login_page.dart';
 import 'package:cashier_mate/models/product_type.dart'; // save data
 import 'package:get/get.dart';
 
+
+
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {

@@ -38,7 +38,7 @@ class Texts {
   static String regExPass() => r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,}$';
 
   //MARK: URL
-  static String baseUrl() => 'http://fancode.cloud/api/v1/';
+  static String baseUrl() => 'https://dev.idempiere.sk/api/v1/';
   static String baseUrlLocal() => 'http://0.0.0.0:3003/';
 
   // Hardcoded login credentials
