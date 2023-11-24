@@ -11,6 +11,8 @@ class LoginPage extends StatelessWidget {
   String email = Texts.empty();
   String password = Texts.empty();
 
+  @override
+
   //MARK: Handle Hit API Login
   void handleSubmit(BuildContext context) {
     String email = emailText.text;
@@ -59,7 +61,7 @@ class LoginPage extends StatelessWidget {
                 field Email
               */
               TextFormField(
-                controller: emailText,
+                controller: emailText..text = 'api_test@idempiere.sk',
                 decoration: InputDecoration(
                   labelText: Texts.email(),
                   labelStyle: TextStyle(
@@ -75,7 +77,7 @@ class LoginPage extends StatelessWidget {
 
               //MARK: field Password
               TextFormField(
-                controller: passText,
+                controller: passText..text = 'api_test_idempiere',
                 decoration: InputDecoration(
                   labelText: Texts.password(),
                   labelStyle: TextStyle(
