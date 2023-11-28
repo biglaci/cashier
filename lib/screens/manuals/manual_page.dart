@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import '../../idempiere_rest/idempiere_client.dart';
+import '../../idempiere_rest/po.dart';
 
 class ManualPage extends StatefulWidget {
   const ManualPage({Key? key}) : super(key: key);
@@ -12,6 +14,7 @@ class ManualPage extends StatefulWidget {
 class _ConditionalFieldsState extends State<ManualPage> {
   final _formKey = GlobalKey<FormBuilderState>();
   int? option;
+  TextEditingController inputtextfield = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +46,7 @@ class _ConditionalFieldsState extends State<ManualPage> {
             // maintainState: false,
             child: FormBuilderTextField(
               name: 'textfield',
+              controller: inputtextfield..text = 'jozin',
               validator: FormBuilderValidators.minLength(4),
               decoration: const InputDecoration(
                 label: Text('Magic field'),
@@ -61,8 +65,10 @@ class _ConditionalFieldsState extends State<ManualPage> {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-              _formKey.currentState!.saveAndValidate();
-              debugPrint(_formKey.currentState?.instantValue.toString() ?? '');
+              //List<T> records = [];
+              final ad_user= Po ;
+              IdempiereClient().getRecord<ad_user extends ModelBase>("models/ad_user", 1, (p0) => null);
+              inputtextfield..text = 'api_test@idempiere.sk';
             },
           ),
         ],
