@@ -20,6 +20,8 @@ dependencies:
   auto_size_text: ^3.0.0
   blue_thermal_printer: ^1.2.3 #<-- for printer just android
   get: ^4.6.5
+  flutter_form_builder: ^9.1.1
+  form_builder_validators: ^9.1.0
 
 flutter_icons: #<-- asset add in here
   android: "launcher_icon"
