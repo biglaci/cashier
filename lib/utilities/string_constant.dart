@@ -21,11 +21,11 @@ class Texts {
   static String valiEmail() => 'Please enter your email';
   static String valiPassword() => 'Please enter your password';
   static String txtTitleFirstLogin() => 'Welcome to';
-  static String txtTitleSecLogin() => 'the iDempiere  Login!';
-  static String txtTitleSecRegister() => 'the Mobile ERP system!';
-  static String txtDescLogin() => 'Sign in to Access Your Mobile ERP';
+  static String txtTitleSecLogin() => 'the Mobile POS Login!';
+  static String txtTitleSecRegister() => 'the Mobile POS Register!';
+  static String txtDescLogin() => 'Sign in to Access Your Mobile Point of Sale';
   static String txtDescRegister() =>
-      'Sign Up to Access Your Mobile ERP';
+      'Sign Up to Access Your Mobile Point of Sale';
   static String txtSwitchRegister() => 'Don\'t have an account? Sign up';
   static String txtSwitchLogin() => 'I already have an account? Sign In';
 
