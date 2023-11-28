@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
   @override
   MainPageState createState() => MainPageState();
 }
@@ -21,7 +23,7 @@ class MainPageState extends State<MainPage> {
   final List<Widget> children = [
     const HomePage(),
     const ManualPage(),
-    AddItemsPage(),
+    const AddItemsPage(),
     const OrderPage(),
     const SettingsPage(),
   ];
@@ -30,7 +32,7 @@ class MainPageState extends State<MainPage> {
   void onItemTapped(int index) {
     setState(() {
       if (index == 2) {
-        Get.to(AddItemsPage(), fullscreenDialog: true);
+        Get.to(const AddItemsPage(), fullscreenDialog: true);
         debugPrint('$index yoo loo');
       } else {
         selectedIndex = index;

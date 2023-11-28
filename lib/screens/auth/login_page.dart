@@ -11,6 +11,8 @@ class LoginPage extends StatelessWidget {
   String email = Texts.empty();
   String password = Texts.empty();
 
+  LoginPage({super.key});
+
   @override
 
   //MARK: Handle Hit API Login

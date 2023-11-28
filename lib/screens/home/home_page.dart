@@ -8,8 +8,8 @@ import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   HomePageState createState() => HomePageState();
@@ -100,9 +100,9 @@ class HomePageState extends State<HomePage> {
                                 BorderRadius.all(Radius.circular(12.0)),
                             borderSide: BorderSide.none,
                           ),
-                          prefixIcon: Icon(Icons.search),
+                          prefixIcon: const Icon(Icons.search),
                           prefixIconColor: Colors.grey,
-                          contentPadding: EdgeInsets.all(10),
+                          contentPadding: const EdgeInsets.all(10),
                         ),
                       ),
                     ),
@@ -142,7 +142,7 @@ class HomePageState extends State<HomePage> {
                   Get.toNamed('/orders');
                 },
                 child: Container(
-                  padding: EdgeInsets.only(left: 20, right: 20),
+                  padding: const EdgeInsets.only(left: 20, right: 20),
                   height: 70.0,
                   decoration: const BoxDecoration(
                     color: Color.fromARGB(255, 93, 93, 93),

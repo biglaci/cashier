@@ -8,10 +8,10 @@ class ManualPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blue[800],
 
-      body: SafeArea(
+      body: const SafeArea(
         child: Column(
           children: [
-            const SizedBox(
+            SizedBox(
               height: 50.0,
             ),
           ],

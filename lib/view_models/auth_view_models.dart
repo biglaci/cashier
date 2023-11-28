@@ -27,7 +27,7 @@ class LoginViewModel {
 
         // Action Navigator
         if (!context.mounted) return;
-        Get.offAll(HomePage());
+        Get.offAll(const HomePage());
       } else {
         // Show error in here
         CustomSnackBar(
@@ -35,7 +35,7 @@ class LoginViewModel {
           const Text("Email tidak terdaftar"),
         );
       }
-    });
+    });//MZI
   }
 
   //MARK: Route to Register

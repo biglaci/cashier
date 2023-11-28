@@ -6,17 +6,17 @@ class UserResponse {
 
   UserResponse({required this.token, required this.status, required this.data});
 
-  factory UserResponse.fromJson(Map<String, dynamic> json) {
+  factory UserResponse.init(String name,String email, int? id, String token) {
     return UserResponse(
-      token: json['token'],
-      data: User.fromJson(json['user']),
-      status: json['status'],
+      token: token,
+      data: User.initUser(name,email,id),
+      status: "ok",
     );
   }
 }
 
 class User {
-  final int userId;
+  final int? userId;
   final String name;
   final String email;
   final String nameUpperCase;
@@ -27,12 +27,12 @@ class User {
       required this.email,
       required this.nameUpperCase});
 
-  factory User.fromJson(Map<String, dynamic> json) {
+  factory User.initUser(String name, String email, int? id) {
     return User(
-      userId: json['id'],
-      name: json['name'],
-      email: json['email'],
-      nameUpperCase: json['name_upper_case'],
+      userId: id,
+      name: name,
+      email: email,
+      nameUpperCase: name.toUpperCase()
     );
   }
 }
