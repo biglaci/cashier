@@ -27,14 +27,14 @@ GridTile getGridItem(ItemArrayList item, ViewType viewType) {
                   fontSize: 12,
                 ),
               ),
-              trailing: Container(
+              trailing: SizedBox(
                 width: 90,
                 height: 40,
                 child: Row(
                   children: [
                     //Icon Minus
                     Container(
-                      padding: EdgeInsets.all(2),
+                      padding: const EdgeInsets.all(2),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: const BorderRadius.all(
@@ -57,8 +57,8 @@ GridTile getGridItem(ItemArrayList item, ViewType viewType) {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.only(left: 8, right: 8),
-                      child: Text("0"),
+                      padding: const EdgeInsets.only(left: 8, right: 8),
+                      child: const Text("0"),
                     ),
 
                     //Icon Minus

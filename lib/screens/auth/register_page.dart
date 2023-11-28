@@ -14,6 +14,8 @@ class RegisterPage extends StatelessWidget {
   String password = Texts.empty();
   String confirmPassword = Texts.empty();
 
+  RegisterPage({super.key});
+
   //MARK: Handle Hit API Login
   void handleSubmit(BuildContext context) {
     String name = nameText.text;

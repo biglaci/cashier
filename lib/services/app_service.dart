@@ -6,6 +6,7 @@ import '../../models/menu_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../idempiere_rest/idempiere_client.dart';
+import '../idempiere_rest/model_base.dart';
 import '../idempiere_rest/session.dart';
 // import 'package:connectivity_plus/connectivity_plus.dart';
 
@@ -43,7 +44,7 @@ class AppService extends ChangeNotifier {
     final urlString = authService.getEndpointUrl(endpoint);
     Uri url = Uri.parse(urlString);
 
-    IdempiereClient().setBaseUrl('${Texts.baseUrl()}');
+    IdempiereClient().setBaseUrl(Texts.baseUrl());
     var response = await IdempiereClient().login("/auth/tokens", email, password);
     int roleId = (await IdempiereClient().getRoles(response.clients.first.id!))
         .first
@@ -66,10 +67,13 @@ class AppService extends ChangeNotifier {
       body: jsonEncode({"userName": email, "password": password}),
     );
 */
-String bearertoken=response.token;
 
+
+/*    ModelBase record = await IdempiereClient().getRecord<ModelBase>(
+              "/models/ad_user", 1000002, (json) => ModelBase(json));*/
     if (  s.token.isNotEmpty) {
-      UserResponse user = UserResponse.fromJson(json.decode(s.token));
+
+      UserResponse user = UserResponse.init( email,email,s.userId,s.token);
       completion(user, true);
     } else {
       completion(null, false);
@@ -95,9 +99,9 @@ String bearertoken=response.token;
     );
 
     if (response.statusCode == 200) {
-      UserResponse user =
-          UserResponse.fromJson(json.decode(response.body)); // passing model
-      completion(user, true);
+      //UserResponse user =
+       //   UserResponse.init(json.decode(response.body)); // passing model
+      //completion(user, true);
     } else {
       completion(null, false);
     }
@@ -105,7 +109,7 @@ String bearertoken=response.token;
 
   void menuList(Function(MenuModel?, bool) completion) async {
     final menuService = AppService();
-    const endpoint = AppEndpoint.menuList;
+    const endpoint = AppEndpoint.profile;//AppEndpoint.menuList;
     final urlString = menuService.getEndpointUrl(endpoint);
     Uri url = Uri.parse(urlString);
 

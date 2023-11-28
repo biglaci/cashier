@@ -13,8 +13,8 @@ class OrderPage extends StatelessWidget {
         backgroundColor: Colors.white,
         actions: const [],
       ),
-      body: Column(
-        children: const [
+      body: const Column(
+        children: [
           SizedBox(
             height: 50.0,
           )
