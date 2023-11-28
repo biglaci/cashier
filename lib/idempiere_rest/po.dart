@@ -6,14 +6,21 @@ import '../idempiere_rest/model_base.dart';
 
 /// Class that abstracts the response of [IdempiereClient.getRoles]
 class Po extends ModelBase {
-  late String name;
-  late Map<String, dynamic> json_po;
+//  late String name;
+   Map<String, dynamic> _json_po=new Map();
+  int _po_id=0;
+   bool get hasJson => _json_po != null;
 
   Po(Map<String, dynamic> json) : super(json) {
     id = json['id'];
-    name = json['name'];
-    json_po=json;
+    _po_id= json['id'];
+    //name = json['name'];
+    _json_po=json;
   }
+
+   int get po_id => _po_id;
+
+  Map<String, dynamic> get json_po => _json_po;
 
   @override
   Map<String, dynamic> toJson() {

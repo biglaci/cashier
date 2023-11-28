@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../services/app_service.dart';
 import '../../utilities/alert_dialog.dart';
 import '../../utilities/string_constant.dart';
+import '../app/main_page.dart';
 import '../screens/home/home_page.dart';
 import '../screens/auth/register_page.dart';
 import '../screens/auth/login_page.dart';
@@ -27,7 +28,7 @@ class LoginViewModel {
 
         // Action Navigator
         if (!context.mounted) return;
-        Get.offAll(const HomePage());
+        Get.offAll(const MainPage());
       } else {
         // Show error in here
         CustomSnackBar(

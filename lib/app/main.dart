@@ -26,11 +26,11 @@ class MyApp extends StatelessWidget {
       home: FutureBuilder<bool>(
         future: checkLogin(),
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-          if (snapshot.hasData && snapshot.data!) {
-            return const MainPage();
-          } else {
+         if (snapshot.hasData && snapshot.data!) {
+           return  LoginPage(); //const MainPage();
+        } else {
             return LoginPage();
-          }
+         }
         },
       ),
     );

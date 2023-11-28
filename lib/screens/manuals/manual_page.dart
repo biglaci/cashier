@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:get/get.dart';
 import '../../idempiere_rest/idempiere_client.dart';
 import '../../idempiere_rest/po.dart';
 
@@ -64,12 +65,24 @@ class _ConditionalFieldsState extends State<ManualPage> {
               "Submit",
               style: TextStyle(color: Colors.white),
             ),
-            onPressed: () {
+            onPressed: ()
               //List<T> records = [];
-              final ad_user= Po ;
-              IdempiereClient().getRecord<ad_user extends ModelBase>("models/ad_user", 1, (p0) => null);
-              inputtextfield..text = 'api_test@idempiere.sk';
+             // client = IdempiereClient().instance;
+
+          //    Future<List<Po>> records = IdempiereClient().get<Po>(
+         //     "models/ad_user", (json) => Po(json),
+          //    orderBy: [ 'Name'],
+           //   select: ['Name', 'Value'],
+           //   top: 10,
+          //    skip: 2,
+           //   showsql: true);
+              async {
+              Po? user = await IdempiereClient().getRecord<Po>(
+                  "models/ad_user", 1000003, (json) => Po(json));
+              if (user!=null && user.hasJson)
+                  inputtextfield..text = user.json_po['Name'];// 'api_test@idempiere.sk';
             },
+
           ),
         ],
       ),

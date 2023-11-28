@@ -109,7 +109,7 @@ class AppService extends ChangeNotifier {
 
   void menuList(Function(MenuModel?, bool) completion) async {
     final menuService = AppService();
-    const endpoint = AppEndpoint.profile;//AppEndpoint.menuList;
+    const endpoint = AppEndpoint.menuList; //AppEndpoint.profile;//
     final urlString = menuService.getEndpointUrl(endpoint);
     Uri url = Uri.parse(urlString);
 
