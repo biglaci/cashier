@@ -14,7 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: ^0.13.1
-  http: ^1.1.0
+  http: ^1.1.2
   shared_preferences: ^2.0.17 #<--For local save or load data
   connectivity_plus: ^5.0.1 #<-- cek conection
   auto_size_text: ^3.0.0

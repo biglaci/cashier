@@ -1,8 +1,8 @@
 class Texts {
   //MARK: Default String
-  static String titleApp() => 'Casier Mate';
+  static String titleApp() => 'iDempiere fluttERP';
   static String titleHome() => 'Home';
-  static String welcomeMsg() => 'Cashier app';
+  static String welcomeMsg() => 'iDempiere';
 
   //MARK: Button
   static String signIn() => 'Sign In';

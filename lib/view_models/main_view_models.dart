@@ -35,9 +35,9 @@ class HomeViewModel {
     AppService().menuList(
       (items, status) async {
         if (status) {
-          debugPrint('${items?.data?[1].imageUrl}success');
+          debugPrint('${items?.data?[1].imageUrl} success');
         } else {
-          debugPrint('failed');
+          debugPrint(' failed');
         }
       },
     );
