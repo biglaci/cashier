@@ -1,10 +1,8 @@
 import 'package:cashier_mate/Utilities/string_constant.dart'; // string constant file
-import 'package:cashier_mate/app/main_page.dart';
 import 'package:flutter/material.dart'; // default package
 import 'package:cashier_mate/screens/auth/login_page.dart';
 import 'package:cashier_mate/models/product_type.dart'; // save data
 import 'package:get/get.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 
 

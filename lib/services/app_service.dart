@@ -6,7 +6,6 @@ import '../../models/menu_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../idempiere_rest/idempiere_client.dart';
-import '../idempiere_rest/model_base.dart';
 import '../idempiere_rest/session.dart';
 // import 'package:connectivity_plus/connectivity_plus.dart';
 

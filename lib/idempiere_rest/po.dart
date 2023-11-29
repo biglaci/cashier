@@ -7,7 +7,7 @@ import '../idempiere_rest/model_base.dart';
 /// Class that abstracts the response of [IdempiereClient.getRoles]
 class Po extends ModelBase {
 //  late String name;
-   Map<String, dynamic> _json_po=new Map();
+   Map<String, dynamic> _json_po={};
   int _po_id=0;
    bool get hasJson => _json_po != null;
 

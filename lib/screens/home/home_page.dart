@@ -49,8 +49,8 @@ class HomePageState extends State<HomePage> {
       // MARK: App Bar
       appBar: AppBar(
         elevation: 0, // for background transparent
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.grey[900],
+        backgroundColor: Colors.pink[900],
+        foregroundColor: Colors.grey[300],
         title: Text(Texts.titleHome()),
         actions: [
           IconButton(

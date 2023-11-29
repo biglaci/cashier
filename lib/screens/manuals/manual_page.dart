@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:get/get.dart';
 import '../../idempiere_rest/idempiere_client.dart';
 import '../../idempiere_rest/po.dart';
 
 class ManualPage extends StatefulWidget {
-  const ManualPage({Key? key}) : super(key: key);
+  const ManualPage({super.key});
 
   @override
   State<ManualPage> createState() => _ConditionalFieldsState();
@@ -79,8 +78,9 @@ class _ConditionalFieldsState extends State<ManualPage> {
               async {
               Po? user = await IdempiereClient().getRecord<Po>(
                   "models/ad_user", 1000003, (json) => Po(json));
-              if (user!=null && user.hasJson)
-                  inputtextfield..text = user.json_po['Name'];// 'api_test@idempiere.sk';
+              if (user!=null && user.hasJson) {
+                inputtextfield.text = user.json_po['Name'];// 'api_test@idempiere.sk';
+              }
             },
 
           ),
