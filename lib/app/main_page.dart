@@ -33,7 +33,7 @@ class MainPageState extends State<MainPage> {
     setState(() {
       if (index == 2) {
         Get.to(const AddItemsPage(), fullscreenDialog: true);
-        debugPrint('$index yoo loo');
+        debugPrint('$index clicked add');
       } else {
         selectedIndex = index;
       }
