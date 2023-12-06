@@ -33,7 +33,7 @@ class LoginViewModel {
         // Show error in here
         CustomSnackBar(
           context,
-          const Text("Email tidak terdaftar"),
+          const Text("E-mail nie je zaregistrovaný"),
         );
       }
     });//MZI
