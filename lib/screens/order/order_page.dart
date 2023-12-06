@@ -1,26 +1,49 @@
 import 'package:flutter/material.dart';
 
-class OrderPage extends StatelessWidget {
-  const OrderPage({super.key});
+import '../../Utilities/string_constant.dart';
+import '../../idempiere_rest/po.dart';
+import '../../models/product_type.dart';
+import '../../utilities/po_lead.dart';
+import '../../view_models/main_view_models.dart';
+import '../../../widgets/grid_item_lead.dart';
+import 'package:get/get.dart';
+
+class OrderPage extends StatefulWidget {
+  const OrderPage({
+    super.key,
+  });
+
+  @override
+  OrderPageState createState() => OrderPageState();
+}
+
+class OrderPageState extends  State<OrderPage>    {
+  //const OrderPage({super.key});
+
+
+  final HomeViewModel homeViewModel = HomeViewModel();
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0, // for background transparent
-        title: const Text("Order"),
-        foregroundColor: Colors.grey[900],
-        backgroundColor: Colors.white,
-        actions: const [],
+      body: SafeArea(
+        child: FutureBuilder(
+            future: listData(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.data == null) {
+                return Center(
+                  child: Text('Loading...'),
+                );
+              } else {
+                return Wrap(
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  runSpacing: 4.0,
+                  children: snapshot.data,
+                );
+              }
+            }),
       ),
-      body: const Column(
-        children: [
-          SizedBox(
-            height: 50.0,
-          )
-        ],
-      ),
-      //batas cuy
     );
   }
 }
