@@ -23,7 +23,7 @@ dependencies:
   flutter_form_builder: ^9.1.1
   form_builder_validators: ^9.1.0
 
-flutter_icons: #<-- asset add in here
+flutter_launcher_icons: #<-- asset add in here
   android: "launcher_icon"
   ios: true
   image_path: "assets/icons/logosmall512.png"
