@@ -4,7 +4,7 @@ import '../idempiere_rest/po.dart';
 
 Future<List<Po>> listData() async {
   Future<List<Po>> records = IdempiereClient().get<Po>(
-      "models/ad_user", (json) => Po(json),
+      "/models/ad_user", (json) => Po(json),
       orderBy: [ 'Name'],
       select: ['Name', 'Value'],
       top: 10,

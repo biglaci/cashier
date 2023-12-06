@@ -52,6 +52,7 @@ class IdempiereClient {
     } else if (endpoint.contains("/warehouses")) {
       return "warehouses";
     }
+
   }
 
   String _buildUrl(final String endpoint,
