@@ -14,6 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.6
   http: ^1.1.2
   shared_preferences: ^2.0.17 #<--For local save or load data
   connectivity_plus: ^5.0.1 #<-- cek conection
@@ -28,6 +29,22 @@ flutter_launcher_icons: #<-- asset add in here
   ios: true
   image_path: "assets/icons/logosmall512.png"
 
+# flutter_native_splash-production.yaml
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/icons/logosplash.png
+  branding: assets/icons/logosplash.png
+  color_dark: "#121212"
+  image_dark: assets/icons/logosplash.png
+  branding_dark: assets/icons/logosplash.png
+
+  android_12:
+    image: assets/icons/logosplash.png
+    icon_background_color: "#ffffff"
+    image_dark: assets/icons/logosplash.png
+    icon_background_color_dark: "#121212"
+
+  web: false
 dev_dependencies:
   flutter_test:
     sdk: flutter

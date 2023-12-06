@@ -5,20 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "cashier_mate",
+            "name": "idempiere_fluttererp",
             "request": "launch",
             "type": "dart",
             "program": "lib/app/main.dart" // setting configuration root
         },
         {
-            "name": "cashier_mate (profile mode)",
+            "name": "idempiere_fluttererp (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
             "program": "lib/app/main.dart" // setting configuration root
         },
         {
-            "name": "cashier_mate (release mode)",
+            "name": "idempiere_fluttererp (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",

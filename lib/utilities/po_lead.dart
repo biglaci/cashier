@@ -1,4 +1,3 @@
-import '../../models/product_type.dart';
 import '../idempiere_rest/idempiere_client.dart';
 import '../idempiere_rest/po.dart';
 
