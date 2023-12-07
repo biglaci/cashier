@@ -4,7 +4,6 @@ import '../../idempiere_rest/po.dart';
 import '../../utilities/po_lead.dart';
 import '../../view_models/main_view_models.dart';
 import 'package:data_table_2/data_table_2.dart';
-import 'package:flutter/material.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({
@@ -34,58 +33,59 @@ class OrderPageState extends  State<OrderPage>    {
                   child: Text('Loading...'),
                 );
               } else {
-                return Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  runSpacing: 4.0,
-                  children: snapshot.data,
-                );
+                return
+                  SingleChildScrollView(
+                    // Using scrollView for scrolling and formating
+                      scrollDirection: Axis.vertical,
+                      // using FittedBox for fitting complte table in screen horizontally.
+                      child: FittedBox(
+                          child: DataTable(
+                            sortColumnIndex: 1,
+                            showCheckboxColumn: false,
+                            border: TableBorder.all(width: 1.0),
+                            // Data columns as required by APIs data.
+                            columns: const [
+                              DataColumn(
+                                  label: Text(
+                                    "id",
+                                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                  )),
+                              DataColumn(
+                                  label: Text(
+                                    "name ",
+                                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                  )),
+                              DataColumn(
+                                  label: Text(
+                                    "value",
+                                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                                  )),
+                            ],
+                            // Main logic and code for geting data and shoing it in table rows.
+                            rows: snapshot.data
+                                .map(
+                              //maping each rows with datalist data
+                                    (data) => DataRow(cells: [
+                                  DataCell(
+                                    Text(data.id.toString(),
+                                        style: const TextStyle(
+                                            fontSize: 25, fontWeight: FontWeight.w500)),
+                                  ),
+                                  DataCell(Text(data.json_po['Name'].toString(),
+                                      style: const TextStyle(
+                                          fontSize: 26, fontWeight: FontWeight.w500))),
+                                  DataCell(
+                                    Text(data.json_po['Value'].toString(),
+                                        style: const TextStyle(
+                                            fontSize: 26, fontWeight: FontWeight.w500)),
+                                  ),
+                                ]))
+                                .toList(), // converting at last into list.
+                          )));
               }
             }),
       ),
     );
   }
-
-
 }
 
-class UserDataTableSource extends DataTableSource {
-  UserDataTableSource({
-    required List<Po> userData,
-  })  : _userData = userData,
-        assert(userData != null);
-
-  final List<Po> _userData;
-
-  @override
-  DataRow getRow(int index) {
-    assert(index >= 0);
-
-    if (index >= _userData.length) {
-      return null;
-    }
-    final _user = _userData[index];
-
-    return DataRow.byIndex(
-      index: index, // DON'T MISS THIS
-      cells: <DataCell>[
-        DataCell(Text('${_user.json_po['Name']}')),
-        DataCell(Text('${_user.json_po['Value']}')),
-        DataCell(Text('${_user.json_po['EMail']}')),
-        DataCell(Text('${_user.json_po['Phone']}')),
-        DataCell(Text('${_user.json_po['Created']}')),
-        DataCell(Text('${_user.json_po['IsVendorLead']}')),
-        DataCell(Text('${_user.json_po['IsSalesLead']}')),
-      ],
-    );
-  }
-
-  @override
-  bool get isRowCountApproximate => false;
-
-  @override
-  int get rowCount => _userData.length;
-
-  @override
-  int get selectedRowCount => 0;
-
-}

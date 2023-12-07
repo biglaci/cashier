@@ -5,20 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "idempiere_fluttererp",
+            "name": "idempiere_flutterp",
             "request": "launch",
             "type": "dart",
             "program": "lib/app/main.dart" // setting configuration root
         },
         {
-            "name": "idempiere_fluttererp (profile mode)",
+            "name": "idempiere_flutterp (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
             "program": "lib/app/main.dart" // setting configuration root
         },
         {
-            "name": "idempiere_fluttererp (release mode)",
+            "name": "idempiere_flutterp (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
