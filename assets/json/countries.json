@@ -1,0 +1,19 @@
+[{
+  "Country": "Slovakia",
+  "ID": 123,
+  "TotalConfirmed": 123,
+  "TotalDeaths": 123
+  },
+{
+  "Country": "Hungary",
+  "ID": 124,
+  "TotalConfirmed": 1233,
+  "TotalDeaths": 1232
+  },
+{
+  "Country": "Austra",
+  "ID": 125,
+  "TotalConfirmed": 1,
+  "TotalDeaths": 1
+  }
+]
