@@ -476,4 +476,38 @@ class IdempiereClient {
           jsonDecode(utf8.decode(response.bodyBytes)));
     }
   }
+  //------------------------
+  Future<json> getJson<json>(
+      String endpoint,
+      {FilterBuilder? filter,
+        ExpandBuilder? expand,
+        List<String>? orderBy,
+        List<String>? select,
+        int? top,
+        int? skip,
+        Object? valRule,
+        ContextBuilder? context,
+        bool showsql = false,
+        String? token}) async {
+    var response = await http.get(
+        Uri.parse(_buildUrl(endpoint,
+            expand: expand,
+            select: select,
+            filter: filter,
+            orderBy: orderBy,
+            top: top,
+            skip: skip,
+            valRule: valRule,
+            context: context,
+            showsql: showsql)),
+        headers: _getReqHeaders(token: token));
+
+    if (response.statusCode == HttpStatus.ok) {
+      return jsonDecode(utf8.decode(response.bodyBytes));
+    } else {
+      final message = jsonDecode(utf8.decode(response.bodyBytes));
+      throw APIException(message["message"], response.statusCode);
+    }
+
+  }
 }

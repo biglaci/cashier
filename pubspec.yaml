@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  provider: ^6.1.1 # source : https://pub.dev/packages/provider Please go there to have a look at the documentation...
   cupertino_icons: ^1.0.2
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.3.6
