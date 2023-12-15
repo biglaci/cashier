@@ -14,7 +14,7 @@ Future<List<Po>> listData() async {
   List<Po> list = await records ;
   return list;
 }
-Future<List<Lead>> fetchData() async {
+Future<List<Po>> fetchData() async {
   // geting response from API.
   Future<List<Po>> records = IdempiereClient().get<Po>(
       "/models/ad_user", (json) => Po(json),
@@ -26,6 +26,6 @@ Future<List<Lead>> fetchData() async {
 
   List<Po> list = await records ;
 
-  return list.map((e) => Lead.fromJson(e)).toList();
+  return  list; //list.map((e) => Lead.fromJson(e)).toList();
 
 }
