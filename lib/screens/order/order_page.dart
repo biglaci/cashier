@@ -2,11 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../idempiere_rest/po.dart';
 import '../../utilities/leads.dart';
-import '../../utilities/po_list.dart';
 import '../../view_models/main_view_models.dart';
-import '../../utilities/lw_lead.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({
@@ -29,11 +26,17 @@ class OrderPageState extends  State<OrderPage>  {
           title: Text('Json Parsing Demo'),
         ),
         body: ChangeNotifierProvider<leads>(
-          create: (context) => leads(),
+          create: (context) => leads(
+              columns: ["IsActive","Name","Value","Email","Phone"],
+              model: 'models/ad_user',
+              orderBy : ["Name"],
+            top:2,
+            skip:10
+          ),
           child: Consumer<leads>(
             builder: (context, provider, child) {
               if (provider.data == null) {
-                provider.getData(context);
+                provider.getData();
                 return Center(child: CircularProgressIndicator());
               }
               // when we have the json loaded... let's put the data into a data table widget
@@ -42,23 +45,7 @@ class OrderPageState extends  State<OrderPage>  {
                 // Data table widget in not scrollable so we have to wrap it in a scroll view when we have a large data set..
                 child: SingleChildScrollView(
                   child: DataTable(
-                    columns: [
-                      DataColumn(
-                          label: Text('Verified'),
-                          tooltip: 'represents if user is verified.'),
-                      DataColumn(
-                          label: Text('First Name'),
-                          tooltip: 'represents first name of the user'),
-                      DataColumn(
-                          label: Text('Last Name'),
-                          tooltip: 'represents last name of the user'),
-                      DataColumn(
-                          label: Text('Email'),
-                          tooltip: 'represents email address of the user'),
-                      DataColumn(
-                          label: Text('Phone'),
-                          tooltip: 'represents phone number of the user'),
-                    ],
+                    columns: provider.columnList,
                     rows: provider.data!.records!
                         .map((data) =>
                     // we return a DataRow every time
