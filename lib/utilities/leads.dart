@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 
 import '../idempiere_rest/idempiere_client.dart';
 
-class MyHomePageProvider extends ChangeNotifier {
+class leads extends ChangeNotifier {
    mlead? data;
 
   Future getData(context) async {

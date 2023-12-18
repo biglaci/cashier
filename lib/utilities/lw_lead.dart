@@ -59,23 +59,6 @@ class POList {
 
 
     DessertDataSource(this.context)  {
-  // Initialize the list of desserts
-
-/*
-  _desserts = <_Dessert>[
-  _Dessert(
-  'Frozen Yogurt',
-  159,
-  '6.0',
-  ),
-   _Dessert(
-  'Green Day',
-  567,
-  '25.0',
-  ),
-  ];
-
- */
       _desserts = getRecords() as List<_Dessert>;
   }
 

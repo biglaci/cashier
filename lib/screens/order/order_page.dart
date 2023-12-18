@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../idempiere_rest/po.dart';
-import '../../utilities/MyHomePageProvider.dart';
+import '../../utilities/leads.dart';
 import '../../utilities/po_list.dart';
 import '../../view_models/main_view_models.dart';
 import '../../utilities/lw_lead.dart';
@@ -28,9 +28,9 @@ class OrderPageState extends  State<OrderPage>  {
           centerTitle: true,
           title: Text('Json Parsing Demo'),
         ),
-        body: ChangeNotifierProvider<MyHomePageProvider>(
-          create: (context) => MyHomePageProvider(),
-          child: Consumer<MyHomePageProvider>(
+        body: ChangeNotifierProvider<leads>(
+          create: (context) => leads(),
+          child: Consumer<leads>(
             builder: (context, provider, child) {
               if (provider.data == null) {
                 provider.getData(context);
