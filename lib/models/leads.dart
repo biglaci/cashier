@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 
-import '../../view_models/mlead.dart';
+import 'mlead.dart';
 
 import 'package:flutter/widgets.dart';
 
@@ -24,7 +24,7 @@ class leads extends ChangeNotifier {
   final List<String> orderBy;
   final int top;
   final int skip;
-   mlead? data;
+  mlead? data;
 
   List<DataColumn> _columnList = [];
   List<DataColumn> get columnList => _columnList;
@@ -47,4 +47,5 @@ class leads extends ChangeNotifier {
       _columnList.insert(i, DataColumn(label: Text(columns[i])));
     };
   }
+
 }

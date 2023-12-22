@@ -9,10 +9,6 @@ import 'package:get/get.dart';
 class HomeViewModel {
   ViewType viewType = ViewType.list;
 
-  //MARK: gride
-  // int crossAxisCount = 2;
-  // double aspectRatio = 1.4;
-
   //MARK: list
   int crossAxisCount = 1;
   double aspectRatio = 4;

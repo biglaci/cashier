@@ -1,10 +1,9 @@
-import '../../../models/product_type.dart';
-import '../../../utilities/string_constant.dart';
-import '../../../view_models/main_view_models.dart';
-import '../../../widgets/grid_item.dart';
-import '../../../utilities/data_constant.dart';
+
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import '../../porecords/activities.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -17,165 +16,107 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   // HomePageState({super.key});
-  final HomeViewModel homeViewModel = HomeViewModel();
-  List<ItemArrayList> itemList = listData();
-  List<ItemArrayList> dispaly_list = List.from(listData());
 
-  void updateList(String value) {
-    //MARK: This function will filter the list
-    setState(() {
-      dispaly_list = itemList
-          .where((element) =>
-              element.title.toLowerCase().contains(value.toLowerCase()))
-          .toList();
-    });
-  }
+  final activities _activities=activities(columns: [""],
+      model: 'models/flv_activity',
+      orderBy : ["startdate"],
+      top:10,
+      skip:0);
 
-  void _incrementValue() {
-    setState(() {
-      homeViewModel.totalOrders = 1;
-    });
-  }
+  String selectedCountry = "AF";
 
   @override
   Widget build(BuildContext context) {
-    //MARK: Request API Get Items
-    homeViewModel.handleItemsList(context);
-
     return Scaffold(
-      //MARK: Main background
-      backgroundColor: Colors.white.withOpacity(0.9),
+      appBar: AppBar(),
+      body: Row(children: [
+        Expanded(
+          child: FutureBuilder(
+              future: _activities.getRecords(),
+              initialData: const [],
+              builder: (context, snapshot) {
+                return createLeadListView(context, snapshot);
+              }),
+        ),
+      ]),
+    );
 
-      // MARK: App Bar
-      appBar: AppBar(
-        elevation: 0, // for background transparent
-        backgroundColor: Colors.pink[900],
-        foregroundColor: Colors.grey[300],
-        title: Text(Texts.titleHome()),
-        actions: [
-          IconButton(
-            icon: Icon(homeViewModel.viewType == ViewType.list
-                ? Icons.window
-                : Icons.view_list_rounded),
-            onPressed: () {
-              if (homeViewModel.viewType == ViewType.list) {
-                homeViewModel.crossAxisCount = 2;
-                homeViewModel.aspectRatio = 1.5;
-                homeViewModel.viewType = ViewType.grid;
-              } else {
-                homeViewModel.crossAxisCount = 1;
-                homeViewModel.aspectRatio = 4;
-                homeViewModel.viewType = ViewType.list;
-              }
-              setState(() {});
-            },
-          )
-        ],
-      ),
+  }
 
-      //MARK: Body
-      body: Stack(
-        children: [
-          Column(
-            children: [
-              Container(
-                height: 80,
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        onTap: () {
-                          // debugPrint('oy'); // delete this ( just example)
-                          // _incrementValue(); // change when add items
-                        },
-                        onChanged: (value) => updateList(value),
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: const Color(0xfff3f6f4),
-                          hintText: Texts.txtSearch(),
-                          border: const OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(12.0)),
-                            borderSide: BorderSide.none,
-                          ),
-                          prefixIcon: const Icon(Icons.search),
-                          prefixIconColor: Colors.grey,
-                          contentPadding: const EdgeInsets.all(10),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.only(
-                      bottom: (homeViewModel.totalOrders > 0) ? 80 : 0),
-                  child: Container(
-                    margin: const EdgeInsets.all(4),
-                    child: GridView.count(
-                      crossAxisCount: homeViewModel.crossAxisCount,
-                      childAspectRatio: homeViewModel.aspectRatio,
-                      children: dispaly_list.map((ItemArrayList item) {
-                        //
-                        debugPrint('to late');
-                        return getGridItem(item, homeViewModel.viewType);
-                      }).toList(),
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-          Visibility(
-            visible: (homeViewModel.totalOrders > 0),
-            child: Positioned(
-              bottom: 24,
-              left: 16,
-              right: 16,
-              child: InkWell(
-                onTap: () {
-                  // here
-                  debugPrint('print');
-                  Get.toNamed('/orders');
-                },
-                child: Container(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  height: 70.0,
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 93, 93, 93),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        16.0,
-                      ),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        '2 Products',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      Expanded(
-                        child: Container(
-                          alignment: Alignment.centerRight,
-                          child: const Text(
-                            "\$14.00",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+  Widget createLeadListView(BuildContext context, AsyncSnapshot snapshot) {
+    var values = snapshot.data;
+    return ListView.builder(
+      itemCount: values == null ? 0 : values.length,
+      itemBuilder: (BuildContext context, int index) {
+        bool isSameDate = true;
+        final String dateString = values[index].startDate;
+        final DateTime date = DateTime.parse(dateString);
+        if (index == 0) {
+          isSameDate = false;
+        } else {
+          final String prevDateString = values[index - 1].startDate;
+          final DateTime prevDate = DateTime.parse(prevDateString);
+          isSameDate = date.isSameDate(prevDate);
+        }
+        if (index == 0 || !(isSameDate)) {
+          return Column(children: [
+            Text(date.formatDate()),
+            listelement(values[index])
+          ]);
+        } else {
+          return listelement(values[index]);
+        }
+
+      },
+    );
+  }
+
+  Widget listelement(valueelemnt) {
+
+    return GestureDetector(
+      child: Column(
+        children: <Widget>[
+          ListTile(
+            leading: FlutterLogo(),
+            title: Text(valueelemnt.name,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+            subtitle:
+
+
+            Text(
+              (valueelemnt.phone!=null?valueelemnt.phone+'\n':'')+
+                  (valueelemnt.position!=null?valueelemnt.position+'\n':''),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+            trailing: Text(
+              (valueelemnt.cLocationID!=null?valueelemnt.cLocationID.identifier+'\n':'')+
+                  (valueelemnt.contactActivityType!=null?valueelemnt.contactActivityType.identifier+'\n':''),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
           ),
+
         ],
       ),
     );
+  }
+
+
+}
+const String dateFormatter = 'MMMM dd, y';
+extension DateHelper on DateTime {
+
+  String formatDate() {
+    final formatter = DateFormat(dateFormatter);
+    return formatter.format(this);
+  }
+  bool isSameDate(DateTime other) {
+    return this.year == other.year &&
+        this.month == other.month &&
+        this.day == other.day;
+  }
+
+  int getDifferenceInDaysWithNow() {
+    final now = DateTime.now();
+    return now.difference(this).inDays;
   }
 }

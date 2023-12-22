@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../utilities/leads.dart';
+import '../../models/leads.dart';
 import '../../view_models/main_view_models.dart';
 
 class OrderPage extends StatefulWidget {
@@ -27,7 +27,7 @@ class OrderPageState extends  State<OrderPage>  {
         ),
         body: ChangeNotifierProvider<leads>(
           create: (context) => leads(
-              columns: ["IsActive","Name","Value","Email","Phone"],
+              columns: ["IsActive","Name","PINCode","Email","Phone"],
               model: 'models/ad_user',
               orderBy : ["Name"],
             top:2,
