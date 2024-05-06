@@ -31,10 +31,10 @@ class mspk_knpr_nastenka extends ChangeNotifier {
   Future getData() async {
 
     var mJson = await IdempiereClient().getJson(
-        'models/ad_user',
-        orderBy: ['Name'],
+        'models/spk_knpr_nastenka',
+        orderBy: ['Created'],
         select: [],
-        top: 10,
+        top: 20,
         skip: 0,
         showsql: true);
     // now we have a json...
