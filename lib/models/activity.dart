@@ -44,12 +44,12 @@ class activity  {
 
 class Records {
   int? id;
-  ADClientID? aDClientID;
-  ADClientID? aDOrgID;
+  ReferenceID? aDClientID;
+  ReferenceID? aDOrgID;
   String? updated;
-  ADClientID? updatedBy;
+  ReferenceID? updatedBy;
   String? created;
-  ADClientID? createdBy;
+  ReferenceID? createdBy;
   bool? isActive;
   String? name;
   String? phone;
@@ -60,10 +60,10 @@ class Records {
   String? startDate;
   String? endDate;
   String? comments;
-  ADClientID? aDUserID;
-  ADClientID? cContactActivityID;
+  ReferenceID? aDUserID;
+  ReferenceID? cContactActivityID;
   String? modelName;
-  ADClientID? cLocationID;
+  ReferenceID? cLocationID;
 
   Records(
       {this.id,
@@ -91,18 +91,18 @@ class Records {
   Records.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     aDClientID = json['AD_Client_ID'] != null
-        ? new ADClientID.fromJson(json['AD_Client_ID'])
+        ? new ReferenceID.fromJson(json['AD_Client_ID'])
         : null;
     aDOrgID = json['AD_Org_ID'] != null
-        ? new ADClientID.fromJson(json['AD_Org_ID'])
+        ? new ReferenceID.fromJson(json['AD_Org_ID'])
         : null;
     updated = json['Updated'];
     updatedBy = json['UpdatedBy'] != null
-        ? new ADClientID.fromJson(json['UpdatedBy'])
+        ? new ReferenceID.fromJson(json['UpdatedBy'])
         : null;
     created = json['Created'];
     createdBy = json['CreatedBy'] != null
-        ? new ADClientID.fromJson(json['CreatedBy'])
+        ? new ReferenceID.fromJson(json['CreatedBy'])
         : null;
     isActive = json['IsActive'];
     name = json['Name'];
@@ -117,14 +117,14 @@ class Records {
     endDate = json['EndDate'];
     comments = json['Comments'];
     aDUserID = json['AD_User_ID'] != null
-        ? new ADClientID.fromJson(json['AD_User_ID'])
+        ? new ReferenceID.fromJson(json['AD_User_ID'])
         : null;
     cContactActivityID = json['C_ContactActivity_ID'] != null
-        ? new ADClientID.fromJson(json['C_ContactActivity_ID'])
+        ? new ReferenceID.fromJson(json['C_ContactActivity_ID'])
         : null;
     modelName = json['model-name'];
     cLocationID = json['C_Location_ID'] != null
-        ? new ADClientID.fromJson(json['C_Location_ID'])
+        ? new ReferenceID.fromJson(json['C_Location_ID'])
         : null;
   }
 
@@ -171,15 +171,15 @@ class Records {
   }
 }
 
-class ADClientID {
+class ReferenceID {
   String? propertyLabel;
   int? id;
   String? identifier;
   String? modelName;
 
-  ADClientID({this.propertyLabel, this.id, this.identifier, this.modelName});
+  ReferenceID({this.propertyLabel, this.id, this.identifier, this.modelName});
 
-  ADClientID.fromJson(Map<String, dynamic> json) {
+  ReferenceID.fromJson(Map<String, dynamic> json) {
     propertyLabel = json['propertyLabel'];
     id = json['id'];
     identifier = json['identifier'];

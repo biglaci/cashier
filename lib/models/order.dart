@@ -45,17 +45,17 @@ class order {
 class Records {
   int? id;
   String? uid;
-  ADClientID? aDClientID;
-  ADClientID? aDOrgID;
+  ReferenceID? aDClientID;
+  ReferenceID? aDOrgID;
   bool? isActive;
   String? created;
-  ADClientID? createdBy;
+  ReferenceID? createdBy;
   String? updated;
-  ADClientID? updatedBy;
+  ReferenceID? updatedBy;
   String? documentNo;
   DocStatus? docStatus;
-  ADClientID? cDocTypeID;
-  ADClientID? cDocTypeTargetID;
+  ReferenceID? cDocTypeID;
+  ReferenceID? cDocTypeTargetID;
   String? description;
   bool? isApproved;
   bool? isCreditApproved;
@@ -66,21 +66,21 @@ class Records {
   String? dateOrdered;
   String? datePromised;
   String? dateAcct;
-  ADClientID? salesRepID;
-  ADClientID? cPaymentTermID;
-  ADClientID? cCurrencyID;
+  ReferenceID? salesRepID;
+  ReferenceID? cPaymentTermID;
+  ReferenceID? cCurrencyID;
   DocStatus? invoiceRule;
   int? freightAmt;
   DocStatus? deliveryViaRule;
   DocStatus? priorityRule;
   double? totalLines;
   double? grandTotal;
-  ADClientID? mWarehouseID;
-  ADClientID? mPriceListID;
-  ADClientID? cBPartnerID;
+  ReferenceID? mWarehouseID;
+  ReferenceID? mPriceListID;
+  ReferenceID? cBPartnerID;
   int? chargeAmt;
   bool? processed;
-  ADClientID? cBPartnerLocationID;
+  ReferenceID? cBPartnerLocationID;
   bool? isSOTrx;
   DocStatus? deliveryRule;
   DocStatus? freightCostRule;
@@ -88,10 +88,10 @@ class Records {
   bool? isDiscountPrinted;
   bool? isTaxIncluded;
   bool? isSelected;
-  ADClientID? cCashLineID;
+  ReferenceID? cCashLineID;
   bool? sendEMail;
-  ADClientID? billBPartnerID;
-  ADClientID? billLocationID;
+  ReferenceID? billBPartnerID;
+  ReferenceID? billLocationID;
   bool? isSelfService;
   bool? isDropShip;
   int? processedOn;
@@ -99,10 +99,10 @@ class Records {
   bool? isPriviledgedRate;
   String? modelName;
   String? pOReference;
-  ADClientID? aDUserID;
-  ADClientID? cPaymentID;
-  ADClientID? billUserID;
-  ADClientID? cConversionTypeID;
+  ReferenceID? aDUserID;
+  ReferenceID? cPaymentID;
+  ReferenceID? billUserID;
+  ReferenceID? cConversionTypeID;
   int? volume;
   int? weight;
 
@@ -174,29 +174,29 @@ class Records {
     id = json['id'];
     uid = json['uid'];
     aDClientID = json['AD_Client_ID'] != null
-        ? new ADClientID.fromJson(json['AD_Client_ID'])
+        ? new ReferenceID.fromJson(json['AD_Client_ID'])
         : null;
     aDOrgID = json['AD_Org_ID'] != null
-        ? new ADClientID.fromJson(json['AD_Org_ID'])
+        ? new ReferenceID.fromJson(json['AD_Org_ID'])
         : null;
     isActive = json['IsActive'];
     created = json['Created'];
     createdBy = json['CreatedBy'] != null
-        ? new ADClientID.fromJson(json['CreatedBy'])
+        ? new ReferenceID.fromJson(json['CreatedBy'])
         : null;
     updated = json['Updated'];
     updatedBy = json['UpdatedBy'] != null
-        ? new ADClientID.fromJson(json['UpdatedBy'])
+        ? new ReferenceID.fromJson(json['UpdatedBy'])
         : null;
     documentNo = json['DocumentNo'];
     docStatus = json['DocStatus'] != null
         ? new DocStatus.fromJson(json['DocStatus'])
         : null;
     cDocTypeID = json['C_DocType_ID'] != null
-        ? new ADClientID.fromJson(json['C_DocType_ID'])
+        ? new ReferenceID.fromJson(json['C_DocType_ID'])
         : null;
     cDocTypeTargetID = json['C_DocTypeTarget_ID'] != null
-        ? new ADClientID.fromJson(json['C_DocTypeTarget_ID'])
+        ? new ReferenceID.fromJson(json['C_DocTypeTarget_ID'])
         : null;
     description = json['Description'];
     isApproved = json['IsApproved'];
@@ -209,13 +209,13 @@ class Records {
     datePromised = json['DatePromised'];
     dateAcct = json['DateAcct'];
     salesRepID = json['SalesRep_ID'] != null
-        ? new ADClientID.fromJson(json['SalesRep_ID'])
+        ? new ReferenceID.fromJson(json['SalesRep_ID'])
         : null;
     cPaymentTermID = json['C_PaymentTerm_ID'] != null
-        ? new ADClientID.fromJson(json['C_PaymentTerm_ID'])
+        ? new ReferenceID.fromJson(json['C_PaymentTerm_ID'])
         : null;
     cCurrencyID = json['C_Currency_ID'] != null
-        ? new ADClientID.fromJson(json['C_Currency_ID'])
+        ? new ReferenceID.fromJson(json['C_Currency_ID'])
         : null;
     invoiceRule = json['InvoiceRule'] != null
         ? new DocStatus.fromJson(json['InvoiceRule'])
@@ -230,18 +230,18 @@ class Records {
     totalLines = json['TotalLines'];
     grandTotal = json['GrandTotal'];
     mWarehouseID = json['M_Warehouse_ID'] != null
-        ? new ADClientID.fromJson(json['M_Warehouse_ID'])
+        ? new ReferenceID.fromJson(json['M_Warehouse_ID'])
         : null;
     mPriceListID = json['M_PriceList_ID'] != null
-        ? new ADClientID.fromJson(json['M_PriceList_ID'])
+        ? new ReferenceID.fromJson(json['M_PriceList_ID'])
         : null;
     cBPartnerID = json['C_BPartner_ID'] != null
-        ? new ADClientID.fromJson(json['C_BPartner_ID'])
+        ? new ReferenceID.fromJson(json['C_BPartner_ID'])
         : null;
     chargeAmt = json['ChargeAmt'];
     processed = json['Processed'];
     cBPartnerLocationID = json['C_BPartner_Location_ID'] != null
-        ? new ADClientID.fromJson(json['C_BPartner_Location_ID'])
+        ? new ReferenceID.fromJson(json['C_BPartner_Location_ID'])
         : null;
     isSOTrx = json['IsSOTrx'];
     deliveryRule = json['DeliveryRule'] != null
@@ -257,14 +257,14 @@ class Records {
     isTaxIncluded = json['IsTaxIncluded'];
     isSelected = json['IsSelected'];
     cCashLineID = json['C_CashLine_ID'] != null
-        ? new ADClientID.fromJson(json['C_CashLine_ID'])
+        ? new ReferenceID.fromJson(json['C_CashLine_ID'])
         : null;
     sendEMail = json['SendEMail'];
     billBPartnerID = json['Bill_BPartner_ID'] != null
-        ? new ADClientID.fromJson(json['Bill_BPartner_ID'])
+        ? new ReferenceID.fromJson(json['Bill_BPartner_ID'])
         : null;
     billLocationID = json['Bill_Location_ID'] != null
-        ? new ADClientID.fromJson(json['Bill_Location_ID'])
+        ? new ReferenceID.fromJson(json['Bill_Location_ID'])
         : null;
     isSelfService = json['IsSelfService'];
     isDropShip = json['IsDropShip'];
@@ -274,16 +274,16 @@ class Records {
     modelName = json['model-name'];
     pOReference = json['POReference'];
     aDUserID = json['AD_User_ID'] != null
-        ? new ADClientID.fromJson(json['AD_User_ID'])
+        ? new ReferenceID.fromJson(json['AD_User_ID'])
         : null;
     cPaymentID = json['C_Payment_ID'] != null
-        ? new ADClientID.fromJson(json['C_Payment_ID'])
+        ? new ReferenceID.fromJson(json['C_Payment_ID'])
         : null;
     billUserID = json['Bill_User_ID'] != null
-        ? new ADClientID.fromJson(json['Bill_User_ID'])
+        ? new ReferenceID.fromJson(json['Bill_User_ID'])
         : null;
     cConversionTypeID = json['C_ConversionType_ID'] != null
-        ? new ADClientID.fromJson(json['C_ConversionType_ID'])
+        ? new ReferenceID.fromJson(json['C_ConversionType_ID'])
         : null;
     volume = json['Volume'];
     weight = json['Weight'];
@@ -411,15 +411,15 @@ class Records {
   }
 }
 
-class ADClientID {
+class ReferenceID {
   String? propertyLabel;
   int? id;
   String? identifier;
   String? modelName;
 
-  ADClientID({this.propertyLabel, this.id, this.identifier, this.modelName});
+  ReferenceID({this.propertyLabel, this.id, this.identifier, this.modelName});
 
-  ADClientID.fromJson(Map<String, dynamic> json) {
+  ReferenceID.fromJson(Map<String, dynamic> json) {
     propertyLabel = json['propertyLabel'];
     id = json['id'];
     identifier = json['identifier'];
