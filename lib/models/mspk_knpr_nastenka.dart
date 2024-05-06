@@ -33,7 +33,7 @@ class mspk_knpr_nastenka extends ChangeNotifier {
     var mJson = await IdempiereClient().getJson(
         'models/spk_knpr_nastenka',
         orderBy: ['Created'],
-        select: [],
+        select: ['AD_Org_OID', 'Created','Value', 'Name', 'Description'],
         top: 20,
         skip: 0,
         showsql: true);
