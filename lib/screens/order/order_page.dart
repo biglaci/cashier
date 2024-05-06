@@ -2,8 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../models/leads.dart';
-import '../../view_models/main_view_models.dart';
+import '../../models/mlead.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({
@@ -15,7 +14,6 @@ class OrderPage extends StatefulWidget {
 }
 
 class OrderPageState extends  State<OrderPage>  {
-  final HomeViewModel homeViewModel = HomeViewModel();
 
 
     @override
@@ -25,15 +23,15 @@ class OrderPageState extends  State<OrderPage>  {
           centerTitle: true,
           title: Text('Json Parsing Demo'),
         ),
-        body: ChangeNotifierProvider<leads>(
-          create: (context) => leads(
+        body: ChangeNotifierProvider<mlead>(
+          create: (context) => mlead(
               columns: ["IsActive","Name","PINCode","Email","Phone"],
               model: 'models/ad_user',
               orderBy : ["Name"],
             top:2,
             skip:10
           ),
-          child: Consumer<leads>(
+          child: Consumer<mlead>(
             builder: (context, provider, child) {
               if (provider.data == null) {
                 provider.getData();

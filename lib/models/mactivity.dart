@@ -1,14 +1,9 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-
-import 'mlead.dart';
-
-import 'package:flutter/widgets.dart';
-
+import '../../models/activity.dart';
 import '../idempiere_rest/idempiere_client.dart';
 
-class leads extends ChangeNotifier {
-  leads({
+class mactivity   {
+  mactivity({
     required this.columns,
     required this.model,
     required this.orderBy,
@@ -16,7 +11,6 @@ class leads extends ChangeNotifier {
     required this.skip
   }) {
     _addColumns();
-    //  _addRows();
   }
 
   final List<String> columns;
@@ -24,22 +18,36 @@ class leads extends ChangeNotifier {
   final List<String> orderBy;
   final int top;
   final int skip;
-  mlead? data;
-
+  activity? data;
+  List<Records> _leadlist = [];
   List<DataColumn> _columnList = [];
   List<DataColumn> get columnList => _columnList;
-  Future getData() async {
 
+
+  Future getData() async {
     var mJson = await IdempiereClient().getJson(
-        'models/ad_user',
-        orderBy: ['Name'],
-        select: [],
-        top: 10,
-        skip: 0,
+        model,
+        orderBy: orderBy,
+        select: columns,
+        top: top,
+        skip: skip,
         showsql: true);
     // now we have a json...
-    this.data = mlead.fromJson(mJson);
-    this.notifyListeners(); // for callback to view
+    this.data = activity.fromJson(mJson);
+  }
+
+  Future<List<Records>>  getRecords() async {
+    var mJson = await IdempiereClient().getJson(
+        model,
+        orderBy: orderBy,
+        select: columns,
+        top: top,
+        skip: skip,
+        showsql: true);
+    // now we have a json...
+    this.data = activity.fromJson(mJson);
+    _leadlist = this.data!.records!;
+    return _leadlist;
   }
 
   void _addColumns() {

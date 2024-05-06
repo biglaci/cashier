@@ -7,13 +7,13 @@ import 'dart:convert';
 import '../idempiere_rest/model_base.dart';
 
 /// Class that abstracts the response of [IdempiereClient.getRoles]
-class Po extends ModelBase {
+class user extends ModelBase {
 //  late String name;
    Map<String, dynamic> _json_po={};
   int _po_id=0;
    bool get hasJson => _json_po != null;
 
-  Po(Map<String, dynamic> json) : super(json) {
+  user(Map<String, dynamic> json) : super(json) {
     id = json['id'];
     _po_id= json['id'];
     //name = json['name'];

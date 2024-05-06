@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../idempiere_rest/idempiere_client.dart';
-import '../../idempiere_rest/po.dart';
+import '../../models/user.dart';
 
 class ManualPage extends StatefulWidget {
   const ManualPage({super.key});
@@ -76,10 +76,10 @@ class _ConditionalFieldsState extends State<ManualPage> {
           //    skip: 2,
            //   showsql: true);
               async {
-              Po? user = await IdempiereClient().getRecord<Po>(
-                  "models/ad_user", 1000003, (json) => Po(json));
-              if (user!=null && user.hasJson) {
-                inputtextfield.text = user.json_po['Name'];// 'api_test@idempiere.sk';
+              user? usertoupdate = await IdempiereClient().getRecord<user>(
+                  "models/ad_user", 1000003, (json) => user(json));
+              if (usertoupdate!=null && usertoupdate.hasJson) {
+                inputtextfield.text = usertoupdate.json_po['Name'];// 'api_test@idempiere.sk';
               }
             },
 

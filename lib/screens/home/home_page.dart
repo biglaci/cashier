@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../porecords/activities.dart';
+import '../../models/mactivity.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   // HomePageState({super.key});
 
-  final activities _activities=activities(columns: [""],
+  final mactivity _activities=mactivity(columns: [""],
       model: 'models/flv_activity',
       orderBy : ["startdate"],
       top:10,

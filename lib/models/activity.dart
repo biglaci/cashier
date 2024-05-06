@@ -1,4 +1,4 @@
-class mactivities {
+class activity  {
   int? pageCount;
   int? recordsSize;
   int? skipRecords;
@@ -6,7 +6,7 @@ class mactivities {
   int? arrayCount;
   List<Records>? records;
 
-  mactivities(
+  activity(
       {this.pageCount,
         this.recordsSize,
         this.skipRecords,
@@ -14,7 +14,7 @@ class mactivities {
         this.arrayCount,
         this.records});
 
-  mactivities.fromJson(Map<String, dynamic> json) {
+  activity.fromJson(Map<String, dynamic> json) {
     pageCount = json['page-count'];
     recordsSize = json['records-size'];
     skipRecords = json['skip-records'];

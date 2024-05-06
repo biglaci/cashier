@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import '../../Utilities/string_constant.dart';
 import '../../models/user_model.dart';
-import '../../models/menu_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../idempiere_rest/idempiere_client.dart';
@@ -107,22 +106,6 @@ class AppService extends ChangeNotifier {
     }
   }
 
-  void menuList(Function(MenuModel?, bool) completion) async {
-    final menuService = AppService();
-    const endpoint = AppEndpoint.menuList; //AppEndpoint.profile;//
-    final urlString = menuService.getEndpointUrl(endpoint);
-    Uri url = Uri.parse(urlString);
 
-    var response = await http.get(
-      url,
-      headers: {'Content-Type': 'application/json'},
-    );
 
-    if (response.statusCode == 200) {
-      MenuModel menu = MenuModel.fromJson(json.decode(response.body));
-      completion(menu, true);
-    } else {
-      completion(null, false);
-    }
-  }
 }

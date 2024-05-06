@@ -1,4 +1,3 @@
-import '../../view_models/main_view_models.dart';
 import '../../screens/home/home_page.dart';
 import '../../screens/manuals/manual_page.dart';
 import '../../screens/order/order_page.dart';
@@ -16,7 +15,6 @@ class MainPage extends StatefulWidget {
 }
 
 class MainPageState extends State<MainPage> {
-  final HomeViewModel homeViewModel = HomeViewModel();
   int selectedIndex = 0;
 
   //MARK: List Items Bottom Bar
