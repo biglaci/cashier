@@ -45,15 +45,15 @@ class spk_knpr_nastenka {
 class Records {
   int? id;
   String? uid;
-  ADClientID? aDClientID;
-  ADClientID? aDOrgID;
+  ReferenceID? aDClientID;
+  ReferenceID? aDOrgID;
   String? created;
-  ADClientID? createdBy;
+  ReferenceID? createdBy;
   String? description;
   bool? isActive;
   String? name;
   String? updated;
-  ADClientID? updatedBy;
+  ReferenceID? updatedBy;
   String? value;
   String? modelName;
 
@@ -76,21 +76,21 @@ class Records {
     id = json['id'];
     uid = json['uid'];
     aDClientID = json['AD_Client_ID'] != null
-        ? new ADClientID.fromJson(json['AD_Client_ID'])
+        ? new ReferenceID.fromJson(json['AD_Client_ID'])
         : null;
     aDOrgID = json['AD_Org_ID'] != null
-        ? new ADClientID.fromJson(json['AD_Org_ID'])
+        ? new ReferenceID.fromJson(json['AD_Org_ID'])
         : null;
     created = json['Created'];
     createdBy = json['CreatedBy'] != null
-        ? new ADClientID.fromJson(json['CreatedBy'])
+        ? new ReferenceID.fromJson(json['CreatedBy'])
         : null;
     description = json['Description'];
     isActive = json['IsActive'];
     name = json['Name'];
     updated = json['Updated'];
     updatedBy = json['UpdatedBy'] != null
-        ? new ADClientID.fromJson(json['UpdatedBy'])
+        ? new ReferenceID.fromJson(json['UpdatedBy'])
         : null;
     value = json['Value'];
     modelName = json['model-name'];
@@ -123,15 +123,15 @@ class Records {
   }
 }
 
-class ADClientID {
+class ReferenceID {
   String? propertyLabel;
   int? id;
   String? identifier;
   String? modelName;
 
-  ADClientID({this.propertyLabel, this.id, this.identifier, this.modelName});
+  ReferenceID({this.propertyLabel, this.id, this.identifier, this.modelName});
 
-  ADClientID.fromJson(Map<String, dynamic> json) {
+  ReferenceID.fromJson(Map<String, dynamic> json) {
     propertyLabel = json['propertyLabel'];
     id = json['id'];
     identifier = json['identifier'];

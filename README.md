@@ -21,6 +21,7 @@ samples, guidance on mobile development, and a full API reference.
 ## Create new class from json 
 
 1) from postman get json from {{protocol}}://{{host}}:{{port}}/api/v1/models/table
-2) copy json to https://javiercbk.github.io/json_to_dart/ , name of genarated class 'tablename'  (modeltablename)
+2) copy json to https://javiercbk.github.io/json_to_dart/ , name of genarated class 'tablename'  (modeltablename),
+    ? replace ADClientID with ReferenceID ?
 3) create dart file 'tablename' in ../models/ and copy generated class into it
 4) in models create model class for generated table. It is class with custom methods/functions over table 
