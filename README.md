@@ -22,7 +22,10 @@ samples, guidance on mobile development, and a full API reference.
 
 1) from postman get json from {{protocol}}://{{host}}:{{port}}/api/v1/models/table
 2) copy json to
-   https://json2csharp.com/code-converters/json-to-dart , name of genarated class 'tablename'  (modeltablename),
-    ? replace ADClientID with ReferenceID ? ( be careful case sensitive)
+   https://javiercbk.github.io/json_to_dart/,
+   https://json2csharp.com/code-converters/json-to-dart ,
+   https://dart-quicktype.netlify.app/
+   name of genarated class 'tablename'  (modeltablename),
+       ? replace ADClientID with ReferenceID ? ( be careful case sensitive)
 3) create dart file 'tablename' in ../models/ and copy generated class into it
 4) in models create model class for generated table. It is class with custom methods/functions over table 
