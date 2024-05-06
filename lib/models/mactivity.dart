@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../models/activity.dart';
+import '../../models/Activity.dart';
 import '../idempiere_rest/idempiere_client.dart';
 
 class mactivity   {
@@ -18,7 +18,7 @@ class mactivity   {
   final List<String> orderBy;
   final int top;
   final int skip;
-  activity? data;
+  Activity? data;
   List<Records> _leadlist = [];
   List<DataColumn> _columnList = [];
   List<DataColumn> get columnList => _columnList;
@@ -33,7 +33,7 @@ class mactivity   {
         skip: skip,
         showsql: true);
     // now we have a json...
-    this.data = activity.fromJson(mJson);
+    this.data = Activity.fromJson(mJson);
   }
 
   Future<List<Records>>  getRecords() async {
@@ -45,7 +45,7 @@ class mactivity   {
         skip: skip,
         showsql: true);
     // now we have a json...
-    this.data = activity.fromJson(mJson);
+    this.data = Activity.fromJson(mJson);
     _leadlist = this.data!.records!;
     return _leadlist;
   }

@@ -1,4 +1,4 @@
-class activity  {
+class Activity  {
   int? pageCount;
   int? recordsSize;
   int? skipRecords;
@@ -6,7 +6,7 @@ class activity  {
   int? arrayCount;
   List<Records>? records;
 
-  activity(
+  Activity(
       {this.pageCount,
         this.recordsSize,
         this.skipRecords,
@@ -14,7 +14,7 @@ class activity  {
         this.arrayCount,
         this.records});
 
-  activity.fromJson(Map<String, dynamic> json) {
+  Activity.fromJson(Map<String, dynamic> json) {
     pageCount = json['page-count'];
     recordsSize = json['records-size'];
     skipRecords = json['skip-records'];
