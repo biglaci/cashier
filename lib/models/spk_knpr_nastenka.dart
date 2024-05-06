@@ -1,4 +1,4 @@
-class mspk_knpr_news {
+class spk_knpr_nastenka {
   int? pageCount;
   int? recordsSize;
   int? skipRecords;
@@ -6,7 +6,7 @@ class mspk_knpr_news {
   int? arrayCount;
   List<Records>? records;
 
-  mspk_knpr_news(
+  spk_knpr_nastenka(
       {this.pageCount,
         this.recordsSize,
         this.skipRecords,
@@ -14,7 +14,7 @@ class mspk_knpr_news {
         this.arrayCount,
         this.records});
 
-  mspk_knpr_news.fromJson(Map<String, dynamic> json) {
+  spk_knpr_nastenka.fromJson(Map<String, dynamic> json) {
     pageCount = json['page-count'];
     recordsSize = json['records-size'];
     skipRecords = json['skip-records'];
@@ -48,13 +48,13 @@ class Records {
   ADClientID? aDClientID;
   ADClientID? aDOrgID;
   String? created;
+  ADClientID? createdBy;
+  String? description;
   bool? isActive;
   String? name;
-  bool? processed;
   String? updated;
-  String? description;
-  Value? value;
-  String? spkDatumDo;
+  ADClientID? updatedBy;
+  String? value;
   String? modelName;
 
   Records(
@@ -63,13 +63,13 @@ class Records {
         this.aDClientID,
         this.aDOrgID,
         this.created,
+        this.createdBy,
+        this.description,
         this.isActive,
         this.name,
-        this.processed,
         this.updated,
-        this.description,
+        this.updatedBy,
         this.value,
-        this.spkDatumDo,
         this.modelName});
 
   Records.fromJson(Map<String, dynamic> json) {
@@ -82,13 +82,17 @@ class Records {
         ? new ADClientID.fromJson(json['AD_Org_ID'])
         : null;
     created = json['Created'];
+    createdBy = json['CreatedBy'] != null
+        ? new ADClientID.fromJson(json['CreatedBy'])
+        : null;
+    description = json['Description'];
     isActive = json['IsActive'];
     name = json['Name'];
-    processed = json['Processed'];
     updated = json['Updated'];
-    description = json['Description'];
-    value = json['Value'] != null ? new Value.fromJson(json['Value']) : null;
-    spkDatumDo = json['spk_datum_do'];
+    updatedBy = json['UpdatedBy'] != null
+        ? new ADClientID.fromJson(json['UpdatedBy'])
+        : null;
+    value = json['Value'];
     modelName = json['model-name'];
   }
 
@@ -103,15 +107,17 @@ class Records {
       data['AD_Org_ID'] = this.aDOrgID!.toJson();
     }
     data['Created'] = this.created;
+    if (this.createdBy != null) {
+      data['CreatedBy'] = this.createdBy!.toJson();
+    }
+    data['Description'] = this.description;
     data['IsActive'] = this.isActive;
     data['Name'] = this.name;
-    data['Processed'] = this.processed;
     data['Updated'] = this.updated;
-    data['Description'] = this.description;
-    if (this.value != null) {
-      data['Value'] = this.value!.toJson();
+    if (this.updatedBy != null) {
+      data['UpdatedBy'] = this.updatedBy!.toJson();
     }
-    data['spk_datum_do'] = this.spkDatumDo;
+    data['Value'] = this.value;
     data['model-name'] = this.modelName;
     return data;
   }
@@ -126,31 +132,6 @@ class ADClientID {
   ADClientID({this.propertyLabel, this.id, this.identifier, this.modelName});
 
   ADClientID.fromJson(Map<String, dynamic> json) {
-    propertyLabel = json['propertyLabel'];
-    id = json['id'];
-    identifier = json['identifier'];
-    modelName = json['model-name'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['propertyLabel'] = this.propertyLabel;
-    data['id'] = this.id;
-    data['identifier'] = this.identifier;
-    data['model-name'] = this.modelName;
-    return data;
-  }
-}
-
-class Value {
-  String? propertyLabel;
-  String? id;
-  String? identifier;
-  String? modelName;
-
-  Value({this.propertyLabel, this.id, this.identifier, this.modelName});
-
-  Value.fromJson(Map<String, dynamic> json) {
     propertyLabel = json['propertyLabel'];
     id = json['id'];
     identifier = json['identifier'];
